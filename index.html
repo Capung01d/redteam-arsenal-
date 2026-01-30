@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 Mazkiplay CyberSecurity | Red Team Toolkit</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.png" type="image/png">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-container">
+            <img src="images/logo.png" alt="Logo" class="loading-logo">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Initializing Red Team Toolkit...</p>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Particles -->
+    <div id="particles-js"></div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="MazkiplayCyberSecurity" class="logo">
+                <span class="logo-text">Mazkiplay <span class="accent">CyberSecurity</span></span>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Red Team</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-bug"></i>
+                    <span>OSINT Pro</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-lock"></i>
+                    <span>Secure</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- Welcome Section (Pre-Login) -->
+        <section id="welcome-section" class="welcome-section active">
+            <div class="welcome-container">
+                <div class="welcome-greeting">
+                    <div class="greeting-badge">
+                        <i class="fas fa-skull-crossbones"></i>
+                        <span>CLASSIFIED</span>
+                    </div>
+                    <h1 class="welcome-title">
+                        <span class="glitch" data-text="Red Team">Red Team</span>
+                        <span class="accent">Access Portal</span>
+                    </h1>
+                    <p class="welcome-subtitle">Authorized personnel only. Enter credentials to access advanced OSINT toolkit.</p>
+                </div>
+
+                <!-- PASSWORD FORM -->
+                <div class="auth-card">
+                    <div class="card-header">
+                        <i class="fas fa-key"></i>
+                        <h3>Authentication Required</h3>
+                    </div>
+                    <form id="password-form" class="auth-form">
+                        <div class="input-group">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                placeholder="Enter Red Team Key..." 
+                                required
+                                autocomplete="off"
+                            >
+                            <i class="fas fa-eye-slash toggle-password" id="toggle-password"></i>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <span class="btn-text">ACCESS GRANTED</span>
+                            <div class="btn-loader" id="btn-loader"></div>
+                        </button>
+                        <div class="auth-hint">
+                            <i class="fas fa-hint"></i>
+                            <span>Key expires in 24h</span>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Demo Stats -->
+                <div class="demo-stats">
+                    <div class="stat-box">
+                        <i class="fas fa-phone"></i>
+                        <span>Phone Intel</span>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-users"></i>
+                        <span>Social OSINT</span>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Geo Tracking</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section (Post-Login) -->
+        <section id="dashboard-section" class="dashboard-section">
+            <div class="dashboard-header">
+                <h2>Welcome back, <span class="accent">Red Team Operator</span></h2>
+                <button id="logout-btn" class="btn-secondary">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+
+            <!-- Tools Grid -->
+            <div class="tools-grid">
+                <!-- Phone Intel -->
+                <div class="tool-card">
+                    <div class="card-header">
+                        <i class="fas fa-phone"></i>
+                        <h3>📱 Phone Intelligence</h3>
+                    </div>
+                    <form id="phone-info-form" class="tool-form">
+                        <div class="input-group">
+                            <input 
+                                type="tel" 
+                                id="phone-number" 
+                                placeholder="+62 14158586273 atau 0814158586273"
+                                required
+                            >
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-search"></i> Analyze Number
+                        </button>
+                    </form>
+                    <div id="phone-info-result" class="result-container"></div>
+                </div>
+
+                <!-- Social OSINT -->
+                <div class="tool-card">
+                    <div class="card-header">
+                        <i class="fas fa-users"></i>
+                        <h3>🌐 Social Footprint</h3>
+                    </div>
+                    <form id="social-media-info-form" class="tool-form">
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                id="social-media-username" 
+                                placeholder="username / email@gmail.com"
+                                required
+                            >
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-search"></i> Search Profiles
+                        </button>
+                    </form>
+                    <div id="social-media-info-result" class="result-container"></div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button id="generate-report" class="btn-success">
+                    <i class="fas fa-file-export"></i> Generate Report
+                </button>
+                <button id="clear-results" class="btn-secondary">
+                    <i class="fas fa-trash"></i> Clear All
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Mazkiplay CyberSecurity. Red Team Toolkit v2.0 | <span class="accent">Authorized Use Only</span></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

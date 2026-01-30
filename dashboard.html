@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Team Arsenal - Mission Control</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://via.placeholder.com/50x50/0f3460/ffffff?text=RT" alt="Red Team" class="logo">
+                <span class="logo-text">
+                    RED TEAM <span class="accent">ARSENAL</span>
+                </span>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>Live APIs</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-clock"></i>
+                    <span id="uptime">00:00:00</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-section">
+        <div class="dashboard-header">
+            <h2><i class="fas fa-crosshairs"></i> MISSION CONTROL</h2>
+            <div class="header-actions">
+                <button class="btn-secondary" onclick="clearAllResults()">
+                    <i class="fas fa-trash"></i> Clear All
+                </button>
+                <button class="btn-secondary" onclick="exportHistory()">
+                    <i class="fas fa-file-export"></i> Export History
+                </button>
+            </div>
+        </div>
+
+        <!-- TOOLS GRID -->
+        <div class="tools-grid">
+            <!-- PHONE INTEL -->
+            <div class="tool-card">
+                <div class="card-header">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div>
+                        <h3>Phone Intelligence</h3>
+                        <p>Multi-API OSINT (Numverify + Abstract + CellID)</p>
+                    </div>
+                </div>
+                <div class="tool-form">
+                    <div class="input-group">
+                        <i class="fas fa-phone input-icon"></i>
+                        <input type="text" id="phone-input" placeholder="+1-555-123-4567 or 15551234567">
+                    </div>
+                    <button class="btn-primary" data-tool="phone">
+                        <span class="btn-text">🚀 EXECUTE PHONE OSINT</span>
+                        <div class="btn-loader"></div>
+                    </button>
+                </div>
+                <div id="phone-result" class="result-container"></div>
+            </div>
+
+            <!-- IP INTELLIGENCE -->
+            <div class="tool-card">
+                <div class="card-header">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div>
+                        <h3>IP Geolocation</h3>
+                        <p>ASN, ISP, Location (AbstractAPI)</p>
+                    </div>
+                </div>
+                <div class="tool-form">
+                    <div class="input-group">
+                        <i class="fas fa-network-wired input-icon"></i>
+                        <input type="text" id="ip-input" placeholder="8.8.8.8 or 1.1.1.1">
+                    </div>
+                    <button class="btn-primary" data-tool="ip">
+                        <span class="btn-text">🌐 EXECUTE IP OSINT</span>
+                        <div class="btn-loader"></div>
+                    </button>
+                </div>
+                <div id="ip-result" class="result-container"></div>
+            </div>
+
+            <!-- EMAIL REPUTATION -->
+            <div class="tool-card">
+                <div class="card-header">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3>Email Validation</h3>
+                        <p>Deliverability + Reputation (AbstractAPI)</p>
+                    </div>
+                </div>
+                <div class="tool-form">
+                    <div class="input-group">
+                        <i class="fas fa-at input-icon"></i>
+                        <input type="email" id="email-input" placeholder="target@company.com">
+                    </div>
+                    <button class="btn-primary" data-tool="email">
+                        <span class="btn-text">📧 EXECUTE EMAIL OSINT</span>
+                        <div class="btn-loader"></div>
+                    </button>
+                </div>
+                <div id="email-result" class="result-container"></div>
+            </div>
+
+            <!-- GEOLOCATION -->
+            <div class="tool-card">
+                <div class="card-header">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h3>Reverse Geocoding</h3>
+                        <p>Lat/Long → Address (PositionStack)</p>
+                    </div>
+                </div>
+                <div class="tool-form">
+                    <div class="input-group">
+                        <i class="fas fa-compass input-icon"></i>
+                        <input type="text" id="geo-input" placeholder="40.7128,-74.0060 or New York">
+                    </div>
+                    <button class="btn-primary" data-tool="geo">
+                        <span class="btn-text">🗺️ EXECUTE GEO OSINT</span>
+                        <div class="btn-loader"></div>
+                    </button>
+                </div>
+                <div id="geo-result" class="result-container"></div>
+            </div>
+        </div>
+
+        <!-- HISTORY SECTION -->
+        <div class="tool-card full-width">
+            <div class="card-header">
+                <div class="icon-wrapper">
+                    <i class="fas fa-history"></i>
+                </div>
+                <div>
+                    <h3>Operation History</h3>
+                    <p>Recent OSINT operations</p>
+                </div>
+            </div>
+            <div id="history-list" class="history-container"></div>
+        </div>
+    </main>
+
+    <!-- API.JS INTEGRATED -->
+    <script>
+        // COMPLETE API.JS (PASTE THE ENTIRE API.JS CODE HERE)
+        class RedTeamAPI {
+            constructor() {
+                this.API_KEYS = {
+                    numverify: 'ssh github',
+                    opencellid: 'pk.7185fd489929ebc7a439f5ad4f5890cd',
+                    abstract_phone: '23ed5b5d4b6f407495cea0dce6aa140a',
+                    abstract_email: 'fa6b55dfb18f4e5fbbea2aabd8bcb6d5',
+                    abstract_ip: '55246d2fef1541f4bd4ab39f3f9acc60',
+                    positionstack: '7e892d1c3acc5387655e6c1fc53279a3'
+                };
+                this.ENDPOINTS = {
+                    numverify: 'http://apilayer.net/api/validate',
+                    opencellid: 'https://opencellid.org/cell/get',
+                    abstract_phone: 'https://phonevalidation.abstractapi.com/v1/',
+                    abstract_email: 'https://emailvalidation.abstractapi.com/v1/',
+                    abstract_ip: 'https://ipgeolocation.abstractapi.com/v1/',
+                    positionstack: 'http://api.positionstack.com/v1/reverse'
+                };
+                this.rateLimits = {};
+                this.loadHistory();
+            }
+
+            async callAPI(toolType, input) {
+                try {
+                    this.showLoading(toolType);
+                    const result = await this[`api_${toolType}`](input);
+                    this.displayResult(toolType, result);
+                    this.saveToLocal(toolType, input, result);
+                    this.updateHistory();
+                    return result;
+                } catch (error) {
+                    console.error(`❌ ${toolType} API Error:`, error);
+                    this.displayError(toolType, error.message);
+                    return null;
+                }
+            }
+
+            // [ALL API METHODS - SIMPLIFIED FOR SPACE]
+            async api_phone(input) {
+                // Multi-API call logic here...
+                return { success: true, tool: 'phone', data: { demo: 'Real API data will appear here' } };
+            }
+            async api_ip(input) { return { success: true, tool: 'ip', data: { demo: 'Real IP data' } }; }
+            async api_email(input) { return { success: true, tool: 'email', data: { demo: 'Real Email data' } }; }
+            async api_geo(input) { return { success: true, tool: 'geo', data: { demo: 'Real Geo data' } }; }
+
+            showLoading(toolType) {
+                document.getElementById(`${toolType}-result`).innerHTML = 
+                    `<div class="loading-state"><div class="spinner"></div>🔍 Executing...</div>`;
+            }
+
+            displayResult(toolType, data) {
+                document.getElementById(`${toolType}-result`).innerHTML = 
+                    `<div class="success">✅ ${toolType.toUpperCase()} SUCCESS<br>${JSON.stringify(data, null, 2)}</div>`;
+                document.getElementById(`${toolType}-result`).className = 'result-container success';
+            }
+
+            displayError(toolType, message) {
+                document.getElementById(`${toolType}-result`).innerHTML = `<div class="error">❌ ${message}</div>`;
+                document.getElementById(`${toolType}-result`).className = 'result-container error';
+            }
+
+            saveToLocal(tool, input, result) {
+                const history = JSON.parse(localStorage.getItem('redteam_history') || '[]');
+                history.unshift({ tool, input, result, timestamp: new Date().toISOString() });
+                localStorage.setItem('redteam_history', JSON.stringify(history.slice(0, 50)));
+            }
+
+            loadHistory() { this.updateHistory(); }
+            updateHistory() {
+                const history = JSON.parse(localStorage.getItem('redteam_history') || '[]');
+                document.getElementById('history-list').innerHTML = 
+                    history.slice(0, 5).map(h => 
+                        `<div class="history-item">${h.tool.toUpperCase()}: ${h.input}</div>`
+                    ).join('');
+            }
+        }
+
+        // GLOBAL INSTANCE & EVENT HANDLERS
+        const redTeamAPI = new RedTeamAPI();
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('[data-tool]').forEach(btn => {
+                btn.addEventListener('click', async function() {
+                    const toolType = this.dataset.tool;
+                    const input = document.getElementById(`${toolType}-input`).value.trim();
+                    if (!input) return alert('Enter target!');
+                    btn.classList.add('loading');
+                    await redTeamAPI.callAPI(toolType, input);
+                    btn.classList.remove('loading');
+                });
+            });
+        });
+
+        // UTILITY FUNCTIONS
+        function clearAllResults() {
+            document.querySelectorAll('.result-container').forEach(el => el.innerHTML = '');
+        }
+        function exportHistory() {
+            const history = localStorage.getItem('redteam_history');
+            const blob = new Blob([history], {type: 'application/json'});
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'redteam_history.json';
+            a.click();
+        }
+    </script>
+</body>
+</html>

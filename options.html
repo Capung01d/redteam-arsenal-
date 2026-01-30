@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Red Team Arsenal | Mazkiplay CyberSecurity</title>
+    
+    <!-- SEO & Security -->
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#0f0f23">
+    
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/options.css">
+</head>
+<body>
+    <!-- Stealth Mode Overlay -->
+    <div id="stealth-overlay" class="stealth-overlay hidden">
+        <div class="stealth-content">
+            <i class="ti ti-shield-off"></i>
+            <h3>STEALTH MODE ACTIVE</h3>
+            <p>All traces minimized. VPN recommended.</p>
+        </div>
+    </div>
+
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <button id="menu-toggle" class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-brand">
+                <img src="images/logo.png" alt="MCS" class="nav-logo">
+                <span>Red Team <strong>Arsenal</strong></span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <button id="stealth-toggle" class="stealth-btn">
+                <i class="fas fa-eye-slash"></i>
+                <span>Stealth</span>
+            </button>
+            <div class="target-counter">
+                <i class="fas fa-bullseye"></i>
+                <span id="target-count">0</span>
+            </div>
+            <button id="export-all" class="export-btn">
+                <i class="fas fa-download"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Sidebar (Mobile) -->
+    <aside id="sidebar" class="sidebar hidden">
+        <div class="sidebar-header">
+            <h3>OPERATION PANEL</h3>
+            <button id="sidebar-close" class="close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mission-status">
+            <div class="status-bar">
+                <div class="status-progress" id="mission-progress"></div>
+            </div>
+            <p id="mission-status">Ready for deployment</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header Banner -->
+        <header class="arsenal-header">
+            <div class="header-bg"></div>
+            <div class="header-content">
+                <div class="mission-badge">
+                    <i class="fas fa-skull-crossbones"></i>
+                    <span>TOP SECRET // NOFORN</span>
+                </div>
+                <h1 class="arsenal-title">
+                    <span class="glitch" data-text="WEAPONIZED">WEAPONIZED</span>
+                    <br><strong>OSINT ARSENAL</strong>
+                </h1>
+                <p class="arsenal-subtitle">
+                    Deploy precision intelligence tools. Multi-API intelligence fusion.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Numverify</span>
+                    <span class="tech-tag">AbstractAPI</span>
+                    <span class="tech-tag">OpenCellID</span>
+                    <span class="tech-tag">PositionStack</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tools Arsenal -->
+        <section class="tools-arsenal">
+            <div class="arsenal-grid">
+                
+                <!-- WEAPON 1: Phone Intelligence -->
+                <div class="weapon-card active" data-weapon="phone-intel">
+                    <div class="weapon-header">
+                        <div class="weapon-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>🔥 PHONE INTELLIGENCE</h3>
+                        <div class="weapon-status online">
+                            <i class="fas fa-circle"></i>
+                            LIVE
+                        </div>
+                    </div>
+                    <div class="weapon-desc">
+                        Multi-provider phone reconnaissance (Numverify + AbstractAPI)
+                    </div>
+                    <form id="phone-info-form" class="weapon-form">
+                        <div class="input-stack">
+                            <div class="input-group icon-left">
+                                <i class="fas fa-phone"></i>
+                                <input 
+                                    type="tel" 
+                                    id="phone-number" 
+                                    placeholder="14158586273 / +628123456789"
+                                    required
+                                >
+                            </div>
+                            <div class="form-hint">
+                                Supports ID (+62), US, EU numbers
+                            </div>
+                        </div>
+                        <button type="submit" class="deploy-btn">
+                            <span class="deploy-text">DEPLOY RECON</span>
+                            <div class="btn-pulse"></div>
+                        </button>
+                    </form>
+                    <div id="phone-info-result" class="intel-result"></div>
+                </div>
+
+                <!-- WEAPON 2: Digital Footprint -->
+                <div class="weapon-card" data-weapon="digital-footprint">
+                    <div class="weapon-header">
+                        <div class="weapon-icon gradient-bg">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>🌐 DIGITAL FOOTPRINT</h3>
+                        <div class="weapon-status online">
+                            <i class="fas fa-circle"></i>
+                            LIVE
+                        </div>
+                    </div>
+                    <div class="weapon-desc">
+                        Email reputation + social media OSINT fusion
+                    </div>
+                    <form id="social-media-info-form" class="weapon-form">
+                        <div class="input-stack">
+                            <div class="input-group icon-left">
+                                <i class="fas fa-at"></i>
+                                <input 
+                                    type="text" 
+                                    id="social-media-username" 
+                                    placeholder="username / email@domain.com"
+                                    required
+                                >
+                            </div>
+                            <div class="form-hint">
+                                Instagram, GitHub, Email Reputation API
+                            </div>
+                        </div>
+                        <button type="submit" class="deploy-btn">
+                            <span class="deploy-text">MAP FOOTPRINT</span>
+                            <div class="btn-pulse"></div>
+                        </button>
+                    </form>
+                    <div id="social-media-info-result" class="intel-result"></div>
+                </div>
+
+                <!-- WEAPON 3: Geo Tracking -->
+                <div class="weapon-card" data-weapon="geo-tracking">
+                    <div class="weapon-header">
+                        <div class="weapon-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>📍 GEO TRACKING</h3>
+                        <div class="weapon-status warning">
+                            <i class="fas fa-circle"></i>
+                            BETA
+                        </div>
+                    </div>
+                    <div class="weapon-desc">
+                        Cell tower triangulation + GPS intel (OpenCellID)
+                    </div>
+                    <form id="geo-track-form" class="weapon-form">
+                        <div class="input-group icon-left">
+                            <i class="fas fa-satellite"></i>
+                            <input type="tel" id="geo-phone" placeholder="Target phone" required>
+                        </div>
+                        <button type="submit" class="deploy-btn">
+                            <span class="deploy-text">TRIANGULATE</span>
+                        </button>
+                    </form>
+                    <div id="geo-result" class="intel-result"></div>
+                </div>
+
+                <!-- WEAPON 4: IP Intel -->
+                <div class="weapon-card" data-weapon="ip-intel">
+                    <div class="weapon-header">
+                        <div class="weapon-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>🌐 IP INTELLIGENCE</h3>
+                        <div class="weapon-status online">
+                            <i class="fas fa-circle"></i>
+                            LIVE
+                        </div>
+                    </div>
+                    <div class="weapon-desc">
+                        IP geolocation + threat intel scoring
+                    </div>
+                    <form id="ip-intel-form" class="weapon-form">
+                        <div class="input-group icon-left">
+                            <i class="fas fa-globe-americas"></i>
+                            <input type="text" id="ip-address" placeholder="103.38.102.209" required>
+                        </div>
+                        <button type="submit" class="deploy-btn">
+                            <span class="deploy-text">ANALYZE IP</span>
+                        </button>
+                    </form>
+                    <div id="ip-result" class="intel-result"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Target Database -->
+        <section class="target-db">
+            <h3><i class="fas fa-database"></i> TARGET DATABASE</h3>
+            <div id="targets-list" class="targets-grid">
+                <!-- Dynamic targets will appear here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Action Button -->
+    <div class="fab-container">
+        <button id="add-target-fab" class="fab primary">
+            <i class="fas fa-plus"></i>
+        </button>
+        <button id="clear-all-fab" class="fab secondary">
+            <i class="fas fa-trash"></i>
+        </button>
+    </div>
+
+    <!-- Modal Templates -->
+    <div id="result-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Intelligence Report</h3>
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <pre id="modal-body"></pre>
+            <div class="modal-actions">
+                <button class="btn-primary">Export JSON</button>
+                <button class="btn-secondary">Copy to Clipboard</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/options.js"></script>
+</body>
+</html>
